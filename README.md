@@ -1,2 +1,2 @@
-# everyday one shader
+# Everyday One Shader
 毎日何かしらインプットしたものをアウトプットするためのリポジトリ。ソースコードはとても汚い(´ー｀)
