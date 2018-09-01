@@ -57,8 +57,8 @@ Shader "Custom/MARIMO"
     
     SubShader
     {
-
         Tags { "RenderType" = "Opaque" }
+        Cull Off
         
         CGPROGRAM
         
