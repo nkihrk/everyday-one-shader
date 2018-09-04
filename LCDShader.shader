@@ -1,3 +1,4 @@
+// https://www.alanzucconi.com/2016/05/04/lcd-shader/
 Shader "Custom/LCDShader"
 {
     Properties
