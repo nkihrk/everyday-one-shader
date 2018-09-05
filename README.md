@@ -1,4 +1,4 @@
-# Everyday One Shader
+# Everyday One Shader - For studying shader (Using Unity5.6.3p1)
   
 ### HologramIllumination.shader  
   
