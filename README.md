@@ -10,13 +10,13 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![IceShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_18-05-22.jpg)
 
-### FakedAudioVisualizer.shader
-
-![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_19-19-38.jpg)
-
 ### BurningEffect.shader
 
 ![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-07_13-21-09.jpg)
+
+### FakedAudioVisualizer.shader
+
+![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_19-19-38.jpg)
 
 ### RotateWireVoxel.shader(You need to change some codes to archive this)
 
