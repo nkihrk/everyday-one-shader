@@ -12,6 +12,10 @@
 
 ![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_19-19-38.jpg)
 
+### BurningEffect.shader
+
+![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-07_13-21-09.jpg)
+
 ### RotateWireVoxel.shader(You need to change some codes to archive this)
 
 ![RotateWireVoxel.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_20-06-33.jpg)
