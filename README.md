@@ -1,4 +1,6 @@
 # Everyday One Shader
+
+USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
   
 ### HologramIllumination.shader  
   
