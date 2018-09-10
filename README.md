@@ -8,7 +8,7 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
   
 ### IceShader.shader
 
-![IceShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_18-05-22.jpg)
+![IceShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-03_22-59-01-611.gif)
 
 ### BurningEffect.shader
 
