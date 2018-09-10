@@ -1,4 +1,4 @@
-# Everyday One Shader
+# Everyday One Shader - For Study Purpose
 
 USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
   
