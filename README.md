@@ -18,23 +18,23 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-07_13-06-44-810.gif)
 
-### FakedAudioVisualizer.shader
-
-![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_09-03-54-539.gif)
-
 ### Fire.shader
 
 ![Fire.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_07-27-13-144.gif)
 
 ![Fire.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_12-56-15-356.gif)
 
+### marimo.shader
+
+![marimo.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_08-56-24-256.gif)
+
+### FakedAudioVisualizer.shader
+
+![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_09-03-54-539.gif)
+
 ### RotateWireVoxel.shader(You need to change some codes to archive this)
 
 ![RotateWireVoxel.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_20-06-33.jpg)
-
-### marimo.shader
-
-![marimo.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-08-23_19-07-47-604.gif)
 
 ### PolyFlash.shader
 
