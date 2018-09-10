@@ -22,13 +22,13 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_09-03-54-539.gif)
 
-### Fire.shader
+### FireShader.shader ( Use noise texture with an alpha channel )
 
-![Fire.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_07-27-13-144.gif)
+![FireShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_07-27-13-144.gif)
 
-![Fire.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_12-56-15-356.gif)
+![FireShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_12-56-15-356.gif)
 
-### RotateWireVoxel.shader(You need to change some codes to archive this)
+### RotateWireVoxel.shader ( You need to change some codes to archive this )
 
 ![RotateWireVoxel.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_20-06-33.jpg)
 
