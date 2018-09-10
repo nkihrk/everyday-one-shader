@@ -18,6 +18,12 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_19-19-38.jpg)
 
+### Fire.shader
+
+![Fire.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam 2018-09-10 07-27-13-144.gif)
+
+![Fire.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam 2018-09-10 12-56-15-356.gif)
+
 ### RotateWireVoxel.shader(You need to change some codes to archive this)
 
 ![RotateWireVoxel.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_20-06-33.jpg)
