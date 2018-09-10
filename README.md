@@ -4,7 +4,7 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
   
 ### HologramIllumination.shader  
   
-![HologramIllumination.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_18-06-24.jpg)
+![HologramIllumination.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_08-50-44-304.gif)
   
 ### IceShader.shader
 
@@ -12,11 +12,15 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ### BurningEffect.shader
 
-![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-07_13-21-09.jpg)
+![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-06_23-28-09-416.gif)
+
+![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-07_13-19-37-498.gif)
+
+![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-07_13-06-44-810.gif)
 
 ### FakedAudioVisualizer.shader
 
-![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_19-19-38.jpg)
+![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_09-03-54-539.gif)
 
 ### Fire.shader
 
@@ -30,7 +34,7 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ### marimo.shader
 
-![marimo.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_18-07-26.png)
+![marimo.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-08-23_19-07-47-604.gif)
 
 ### PolyFlash.shader
 
