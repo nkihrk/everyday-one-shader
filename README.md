@@ -20,7 +20,7 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ### FireShader.shader
 
-![FireShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_07-27-13-144.gif)
+![FireShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-12_01-08-48-646.gif)
 
 ![FireShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_12-56-15-356.gif)
 
