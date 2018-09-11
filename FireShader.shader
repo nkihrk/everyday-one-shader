@@ -13,6 +13,8 @@ Shader "Custom/FireShader"
         _Edge ("Rim Strength", Range(-1.0, 1.0)) = 0.0
         _Shininess ("Rim Shininess", Float) = 1.0
         _Distort ("Distortion", Float) = 1.0
+        _SpeedX ("Speed X", Float) = 1.0
+        _SpeedY ("Speed Y", Float) = 1.0
         [Enum(OFF, 0, FRONT, 1, BACK, 2)] _CullMode ("Cull Mode", int) = 0
     }
     SubShader
@@ -60,6 +62,8 @@ Shader "Custom/FireShader"
             uniform float _Edge;
             uniform float _Shininess;
             uniform float _Distort;
+            uniform float _SpeedX;
+            uniform float _SpeedY;
             
             v2f vert(appdata v)
             {
@@ -79,12 +83,13 @@ Shader "Custom/FireShader"
                 float2 uvD = float2(i.uvD.x, i.uvD.y) * _Distort;
                 fixed4 distort = tex2D(_DistortTex, uvD);
 
-                float2 uvN = float2(i.uvN.x - distort.r, i.uvN.y - distort.g - _Time.x);
+                float2 uvN = float2(i.uvN.x * _SpeedX - distort.r, i.uvN.y - distort.g - _Time.x * _SpeedY);
                 fixed4 noise = tex2D(_NoiseTex, uvN);
                 
                 float a = saturate(pow(gradient.x, _GradientPow) * _GradientThickness);
                 gradient = float4(a, a, a, a);
                 noise += gradient;
+                noise.a = (noise.r + noise.g + noise.b) / 3.0;
                 float b = max(0, _EdgePow * 20);
                 float edgePow = saturate(pow(noise.a, b));
                 float edgePow2 = saturate(pow(noise.a + lerp(_Edge, 0, i.uv.y), b)) - edgePow;
