@@ -18,7 +18,7 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![BurningEffect.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-07_13-06-44-810.gif)
 
-### FireShader.shader ( Use a noise texture with an alpha channel )
+### FireShader.shader
 
 ![FireShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_07-27-13-144.gif)
 
