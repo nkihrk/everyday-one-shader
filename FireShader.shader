@@ -15,6 +15,7 @@ Shader "Custom/FireShader"
         _Distort ("Distortion", Float) = 1.0
         _SpeedX ("Speed X", Float) = 1.0
         _SpeedY ("Speed Y", Float) = 1.0
+        [Enum(OFF, 0, ON, 1)] _Hoge ("Toggle Billboard", int) = 0
         [Enum(OFF, 0, FRONT, 1, BACK, 2)] _CullMode ("Cull Mode", int) = 0
     }
     SubShader
@@ -64,11 +65,13 @@ Shader "Custom/FireShader"
             uniform float _Distort;
             uniform float _SpeedX;
             uniform float _SpeedY;
+            uniform int _Hoge;
             
             v2f vert(appdata v)
             {
                 v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+                float4 pos = mul(UNITY_MATRIX_P, mul(UNITY_MATRIX_MV, float4(0, 0, 0, 1)) + float4(v.vertex.x, v.vertex.y, v.vertex.z, 0));
+                o.vertex = lerp(UnityObjectToClipPos(v.vertex), pos, _Hoge);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.uvN = TRANSFORM_TEX(v.uv, _NoiseTex);
                 o.uvD = TRANSFORM_TEX(v.uv, _DistortTex);
