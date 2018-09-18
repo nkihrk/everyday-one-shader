@@ -10,6 +10,10 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![IceShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-03_22-59-01-611.gif)
 
+### PlasticShader.shader
+
+![PlasticShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/PlasticShader.gif)
+
 ### BurningEffect.shader
 
 ![BurningEffect.shader_1](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-06_23-28-09-416.gif)
