@@ -34,6 +34,12 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![BurningOutlineShader.shader_2](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-15_17-39-52-972.gif)
 
+### BRDFTranslucentSSS.shader
+
+![BRDFTranslucentSSS.shader_1](https://github.com/nkihrk/everyday-one-shader/blob/master/images/BRDFTranslucentSSS.gif)
+
+![BRDFTranslucentSSS.shader_2](https://github.com/nkihrk/everyday-one-shader/blob/master/images/BRDFTranslucentSSS_2.gif)
+
 ### marimo.shader
 
 ![marimo.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_08-56-24-256.gif)
