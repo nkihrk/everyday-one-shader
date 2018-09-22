@@ -3,6 +3,7 @@ Shader "Custom/BRDFTranslucentSSS"
     Properties
     {
         _MainTex ("Main Texture", 2D) = "black" { }
+        [Normal] _NormalTex ("Normal Texture", 2D) = "bump" { }
         _BrdfTex ("BRDF Texture", 2D) = "white" { }
         _ThicknessTex ("Thickness Map", 2D) = "white" { }
         _MainCol ("Main Color", Color) = (1, 1, 1, 1)
@@ -47,6 +48,7 @@ Shader "Custom/BRDFTranslucentSSS"
                 float4 vertex: POSITION;
                 float2 uv: TEXCOORD0;
                 float3 normal: NORMAL;
+                float3 tangent: TANGENT;
             };
 
             struct v2f
@@ -60,9 +62,12 @@ Shader "Custom/BRDFTranslucentSSS"
                 #if defined(VERTEXLIGHT_ON)
                     float3 vertexLightColor: TEXCOORD6;
                 #endif
+                float3 tangent: TEXCOORD7;
+                float3 binormal: TEXCOORD8;
             };
 
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
+            uniform sampler2D _NormalTex; uniform float4 _NormalTex_ST;
             uniform sampler2D _BrdfTex; uniform float4 _BrdfTex_ST;
             uniform sampler2D _ThicknessTex; uniform float4 _ThicknessTex_ST;
             uniform fixed4 _MainCol;
@@ -98,6 +103,8 @@ Shader "Custom/BRDFTranslucentSSS"
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.normal = UnityObjectToWorldNormal(v.normal);
                 o.wpos = mul(unity_ObjectToWorld, v.vertex);
+                o.tangent = UnityObjectToWorldNormal(v.tangent);
+                o.binormal = normalize(cross(o.tangent, o.normal));
                 ComputeVertexLightColor(o);
                 UNITY_TRANSFER_FOG(o, o.vertex);
                 return o;
@@ -105,6 +112,12 @@ Shader "Custom/BRDFTranslucentSSS"
             
             fixed4 frag(v2f i): SV_Target
             {
+                float3 tangentNormal = float4(UnpackNormal(tex2D(_NormalTex, i.uv)), 1);
+                float3x3 TBN = float3x3(i.tangent, i.binormal, i.normal);
+                TBN = transpose(TBN);
+                float3 worldNormal = mul(TBN, tangentNormal);
+                float3 normal = lerp(i.normal, worldNormal, saturate(length(tangentNormal) * 100));
+
                 fixed4 mainTex = tex2D(_MainTex, i.uv);
 
                 float3 lightDir;
@@ -121,31 +134,31 @@ Shader "Custom/BRDFTranslucentSSS"
                     lightCol = _LightColor0;
                 #endif
 
-                lightCol.rgb += max(0, ShadeSH9(float4(i.normal, 1)));
+                lightCol.rgb += max(0, ShadeSH9(float4(normal, 1)));
 
                 float3 viewDir = normalize(_WorldSpaceCameraPos - i.wpos).xyz;
                 float VdotL = saturate(dot(viewDir, lightDir));
                 
-                float3 a = lightDir + i.normal * max(0, _Distortion);
+                float3 a = lightDir + normal * max(0, _Distortion);
                 float b = pow(saturate(dot(viewDir, -a)), max(0, _Power)) * max(0, _Scale);
                 UNITY_LIGHT_ATTENUATION(atten, i, i.wpos.xyz);
                 float thickness = pow(tex2D(_ThicknessTex, i.uv).r, max(0, _Thickness));
                 float3 c = atten * (b + _Ambient.rgb) * thickness;
 
-                float NdotL = saturate(dot(i.normal, lightDir));
+                float NdotL = saturate(dot(normal, lightDir));
                 //NdotL = length(lightDir) != 0 ? (NdotL * 0.5) + 0.5 : 0;
                 NdotL = (NdotL * 0.5) + 0.5;
                 fixed4 col = lerp(_MainCol, mainTex, saturate(length(mainTex) * 100));
                 col.rgb *= NdotL;
 
-                float NdotV = saturate(dot(i.normal, viewDir));
+                float NdotV = saturate(dot(normal, viewDir));
                 float2 brdfUV = float2(NdotV, NdotL);
                 float3 brdf = tex2D(_BrdfTex, brdfUV.xy).rgb;
 
-                float3 specRef = atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, i.normal), viewDir)), 10 * max(0, _SpecShininess)) * 10 * max(0, _SpecShininessScale) * VdotL;
-                specRef += atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, i.normal), viewDir)), max(0, _SpecShininess)) * max(0, _SpecShininessScale) * b * 0.1 * max(0, _BackLightSpecShininess);
+                float3 specRef = atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, normal), viewDir)), 10 * max(0, _SpecShininess)) * 10 * max(0, _SpecShininessScale) * VdotL;
+                specRef += atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, normal), viewDir)), max(0, _SpecShininess)) * max(0, _SpecShininessScale) * b * 0.1 * max(0, _BackLightSpecShininess);
 
-                col.rgb += lerp(fixed3(0, 0, 0), lightCol.rgb * max(0, _LightShininess) * _TranslucentColor, smoothstep(0, 1, thickness)) * lerp(NdotL, c, smoothstep(0, 1, 1 - dot(i.normal, lightDir))) * brdf * max(0, _BrdfShininess) + specRef;
+                col.rgb += lerp(fixed3(0, 0, 0), lightCol.rgb * max(0, _LightShininess) * _TranslucentColor, smoothstep(0, 1, thickness)) * lerp(NdotL, c, smoothstep(0, 1, 1 - dot(normal, lightDir))) * brdf * max(0, _BrdfShininess) + specRef;
 
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
@@ -175,6 +188,7 @@ Shader "Custom/BRDFTranslucentSSS"
                 float4 vertex: POSITION;
                 float2 uv: TEXCOORD0;
                 float3 normal: NORMAL;
+                float3 tangent: TANGENT;
             };
 
             struct v2f
@@ -185,9 +199,12 @@ Shader "Custom/BRDFTranslucentSSS"
                 float3 normal: TEXCOORD2;
                 float4 wpos: TEXCOORD3;
                 LIGHTING_COORDS(4, 5)
+                float3 tangent: TEXCOORD6;
+                float3 binormal: TEXCOORD7;
             };
 
             uniform sampler2D _MainTex; uniform float4 _MainTex_ST;
+            uniform sampler2D _NormalTex; uniform float4 _NormalTex_ST;
             uniform sampler2D _BrdfTex; uniform float4 _BrdfTex_ST;
             uniform sampler2D _ThicknessTex; uniform float4 _ThicknessTex_ST;
             uniform fixed4 _MainCol;
@@ -211,12 +228,20 @@ Shader "Custom/BRDFTranslucentSSS"
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.normal = UnityObjectToWorldNormal(v.normal);
                 o.wpos = mul(unity_ObjectToWorld, v.vertex);
+                o.tangent = UnityObjectToWorldNormal(v.tangent);
+                o.binormal = normalize(cross(o.tangent, o.normal));
                 UNITY_TRANSFER_FOG(o, o.vertex);
                 return o;
             }
             
             fixed4 frag(v2f i): SV_Target
             {
+                float3 tangentNormal = float4(UnpackNormal(tex2D(_NormalTex, i.uv)), 1);
+                float3x3 TBN = float3x3(i.tangent, i.binormal, i.normal);
+                TBN = transpose(TBN);
+                float3 worldNormal = mul(TBN, tangentNormal);
+                float3 normal = lerp(i.normal, worldNormal, saturate(length(tangentNormal) * 100));
+
                 fixed4 mainTex = tex2D(_MainTex, i.uv);
 
                 float3 lightDir;
@@ -227,31 +252,31 @@ Shader "Custom/BRDFTranslucentSSS"
                 #endif
 
                 fixed4 lightCol = _LightColor0;
-                lightCol.rgb += max(0, ShadeSH9(float4(i.normal, 1)));
+                lightCol.rgb += max(0, ShadeSH9(float4(normal, 1)));
 
                 float3 viewDir = normalize(_WorldSpaceCameraPos - i.wpos).xyz;
                 float VdotL = saturate(dot(viewDir, lightDir));
                 
-                float3 a = lightDir + i.normal * max(0, _Distortion);
+                float3 a = lightDir + normal * max(0, _Distortion);
                 float b = pow(saturate(dot(viewDir, -a)), max(0, _Power)) * max(0, _Scale);
                 UNITY_LIGHT_ATTENUATION(atten, i, i.wpos.xyz);
                 float thickness = pow(tex2D(_ThicknessTex, i.uv).r, max(0, _Thickness));
                 float3 c = atten * (b + _Ambient.rgb) * thickness;
 
-                float NdotL = saturate(dot(i.normal, lightDir));
+                float NdotL = saturate(dot(normal, lightDir));
                 //NdotL = length(lightDir) != 0 ? (NdotL * 0.5) + 0.5 : 0;
                 NdotL = (NdotL * 0.5) + 0.5;
                 fixed4 col = lerp(_MainCol, mainTex, saturate(length(mainTex) * 100));
                 col.rgb *= NdotL;
 
-                float NdotV = saturate(dot(i.normal, viewDir));
+                float NdotV = saturate(dot(normal, viewDir));
                 float2 brdfUV = float2(NdotV, NdotL);
                 float3 brdf = tex2D(_BrdfTex, brdfUV.xy).rgb;
 
-                float3 specRef = atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, i.normal), viewDir)), 10 * max(0, _SpecShininess)) * 10 * max(0, _SpecShininessScale) * VdotL;
-                specRef += atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, i.normal), viewDir)), max(0, _SpecShininess)) * max(0, _SpecShininessScale) * b * 0.1 * max(0, _BackLightSpecShininess);
+                float3 specRef = atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, normal), viewDir)), 10 * max(0, _SpecShininess)) * 10 * max(0, _SpecShininessScale) * VdotL;
+                specRef += atten * _LightColor0.rgb * _SpecCol.rgb * pow(max(0, dot(reflect(-lightDir, normal), viewDir)), max(0, _SpecShininess)) * max(0, _SpecShininessScale) * b * 0.1 * max(0, _BackLightSpecShininess);
 
-                col.rgb += lerp(fixed3(0, 0, 0), lightCol.rgb * max(0, _LightShininess) * _TranslucentColor, smoothstep(0, 1, thickness)) * lerp(NdotL, c, smoothstep(0, 1, 1 - dot(i.normal, lightDir))) * brdf * max(0, _BrdfShininess) + specRef;
+                col.rgb += lerp(fixed3(0, 0, 0), lightCol.rgb * max(0, _LightShininess) * _TranslucentColor, smoothstep(0, 1, thickness)) * lerp(NdotL, c, smoothstep(0, 1, 1 - dot(normal, lightDir))) * brdf * max(0, _BrdfShininess) + specRef;
 
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
