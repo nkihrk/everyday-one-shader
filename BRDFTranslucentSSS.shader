@@ -2,8 +2,8 @@ Shader "Custom/BRDFTranslucentSSS"
 {
     Properties
     {
-        _MainTex ("Texture", 2D) = "black" { }
-        _BrdfTex ("BRDF Texture", 2D) = "white"
+        _MainTex ("Main Texture", 2D) = "black" { }
+        _BrdfTex ("BRDF Texture", 2D) = "white" { }
         _ThicknessTex ("Thickness Map", 2D) = "white" { }
         _MainCol ("Main Color", Color) = (1, 1, 1, 1)
         _Ambient ("Ambient", Color) = (1, 1, 1, 1)
