@@ -130,7 +130,7 @@ Shader "Custom/BRDFTranslucentSSS"
                 float b = pow(saturate(dot(viewDir, -a)), max(0, _Power)) * max(0, _Scale);
                 UNITY_LIGHT_ATTENUATION(atten, i, i.wpos.xyz);
                 float thickness = pow(tex2D(_ThicknessTex, i.uv).r, max(0, _Thickness));
-                float c = atten * (b + _Ambient) * thickness;
+                float3 c = atten * (b + _Ambient.rgb) * thickness;
 
                 float NdotL = saturate(dot(i.normal, lightDir));
                 //NdotL = length(lightDir) != 0 ? (NdotL * 0.5) + 0.5 : 0;
@@ -236,7 +236,7 @@ Shader "Custom/BRDFTranslucentSSS"
                 float b = pow(saturate(dot(viewDir, -a)), max(0, _Power)) * max(0, _Scale);
                 UNITY_LIGHT_ATTENUATION(atten, i, i.wpos.xyz);
                 float thickness = pow(tex2D(_ThicknessTex, i.uv).r, max(0, _Thickness));
-                float c = atten * (b + _Ambient) * thickness;
+                float3 c = atten * (b + _Ambient.rgb) * thickness;
 
                 float NdotL = saturate(dot(i.normal, lightDir));
                 //NdotL = length(lightDir) != 0 ? (NdotL * 0.5) + 0.5 : 0;
