@@ -60,7 +60,7 @@ Shader "Custom/BRDFTranslucentSSS"
                 float4 wpos: TEXCOORD3;
                 LIGHTING_COORDS(4, 5)
                 #if defined(VERTEXLIGHT_ON)
-                    float3 vertexLightColor: TEXCOORD6;
+                    fixed3 vertexLightColor: TEXCOORD6;
                 #endif
                 float3 tangent: TEXCOORD7;
                 float3 binormal: TEXCOORD8;
@@ -129,7 +129,7 @@ Shader "Custom/BRDFTranslucentSSS"
 
                 fixed4 lightCol;
                 #if defined(VERTEXLIGHT_ON)
-                    lightCol = i.vertexLightColor;
+                    lightCol = fixed4(i.vertexLightColor, 1);
                 #else
                     lightCol = _LightColor0;
                 #endif
