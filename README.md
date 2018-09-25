@@ -18,27 +18,17 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 
 ![BurningEffect.shader_1](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-06_23-28-09-416.gif)
 
-![BurningEffect.shader_2](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-07_13-19-37-498.gif)
-
-![BurningEffect.shader_3](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-07_13-06-44-810.gif)
-
 ### FireShader.shader
 
 ![FireShader.shader_1](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-12_01-08-48-646.gif)
 
-![FireShader.shader_2](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-10_12-56-15-356.gif)
-
 ### BurningOutlineShader.shader
-
-![BurningOutlineShader.shader_1](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-12_03-46-10-580.gif)
 
 ![BurningOutlineShader.shader_2](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-15_17-39-52-972.gif)
 
 ### BRDFTranslucentSSS.shader
 
 ![BRDFTranslucentSSS.shader_1](https://github.com/nkihrk/everyday-one-shader/blob/master/images/BRDFTranslucentSSS.gif)
-
-![BRDFTranslucentSSS.shader_2](https://github.com/nkihrk/everyday-one-shader/blob/master/images/BRDFTranslucentSSS_2.gif)
 
 ### UnlitWaterFallShader.shader / UnlitWater.shader
 
