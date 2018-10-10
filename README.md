@@ -33,23 +33,3 @@ USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
 ### UnlitWaterFallShader.shader / UnlitWater.shader
 
 ![UnlitWaterFallShader.shader / UnlitWater.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/UnlitWaterFall.gif)
-
-### marimo.shader
-
-![marimo.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_08-56-24-256.gif)
-
-### FakedAudioVisualizer.shader
-
-![FakedAudioVisualizer.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_09-03-54-539.gif)
-
-### RotateWireVoxel.shader ( You need to change some codes to archive this )
-
-![RotateWireVoxel.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_20-06-33.jpg)
-
-### PolyFlash.shader
-
-![PolyFlash.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_19-21-57.png)
-
-### LCDShader.shader
-
-![LCDShader.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/ApplicationFrameHost_2018-09-04_18-31-54.jpg)
