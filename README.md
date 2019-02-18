@@ -2,7 +2,7 @@
 
 USING POST PROCCESSING STACK MAKES MY SHADERS MUCH BETTER
   
-### HologramIllumination.shader  
+### HologramIllumination.shader
   
 ![HologramIllumination.shader](https://github.com/nkihrk/everyday-one-shader/blob/master/images/bandicam_2018-09-01_08-50-44-304.gif)
   
